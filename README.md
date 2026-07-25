@@ -318,7 +318,3 @@ This project helped me practice:
 * Add refresh tokens
 * Deploy the API
 * Add a small frontend dashboard
-
-## License
-
-This project is licensed under the MIT License.
