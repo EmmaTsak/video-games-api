@@ -11,25 +11,33 @@ router.post('/login', authController.login);
 // User CRUD routes
 router
   .route('/')
-  .get(gameController.getAllGames)
+  .get(
+    authController.protect,
+    authController.restrictTo('admin'),
+    userController.getAllUsers
+  )
   .post(
     authController.protect,
     authController.restrictTo('admin'),
-    gameController.createGame
+    userController.createUser
   );
 
 router
   .route('/:id')
-  .get(gameController.getGame)
+  .get(
+    authController.protect,
+    authController.restrictTo('admin'),
+    userController.getUser
+  )
   .patch(
     authController.protect,
     authController.restrictTo('admin'),
-    gameController.updateGame
+    userController.updateUser
   )
   .delete(
     authController.protect,
     authController.restrictTo('admin'),
-    gameController.deleteGame
+    userController.deleteUser
   );
 
 module.exports = router;
